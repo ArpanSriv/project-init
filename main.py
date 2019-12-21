@@ -3,7 +3,7 @@ import pygit2
 import sys, getopt
 import os
 
-token = "21a059c569ad93e73860c8a9ccd0f4a21df37430"
+token = ""
 repos_to_delete = ["test_script"]
 
 project_codes = {
@@ -93,6 +93,10 @@ def clone_and_init_github_repo(repo):
 
 
 def main():
+    with open('token_github', 'r') as token_file:
+        token = token_file.readline()
+
+    print("Init Github client...\n")
     github_client = Github(token)
 
     # Github CLient User Object
